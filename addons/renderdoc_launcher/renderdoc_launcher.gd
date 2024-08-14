@@ -5,6 +5,7 @@ var button_res: PackedScene = preload("res://addons/renderdoc_launcher/res/rende
 var path_tres: String = "res://addons/renderdoc_launcher/res/renderdoc_path.tres"
 var renderdoc_settings_path: String = "addons/renderdoc_launcher/res/settings.cap"
 
+var thread: Thread
 var renderdoc_path: RenderDocPath
 var button: Control
 var file_dialog: FileDialog
@@ -44,7 +45,7 @@ func open_renderdoc():
 		print("Typical Windows installation would be at 'C:\\Program Files\\RenderDoc\\qrenderdoc.exe'.")
 		file_dialog.popup_centered()
 	else:
-		execute_renderdoc();
+		execute_renderdoc()
 
 func execute_renderdoc():
 	if create_renderdoc_settings() != OK:
@@ -81,7 +82,7 @@ func execute_renderdoc():
 	
 	await get_tree().process_frame
 	print("Launching RenderDoc.")
-	OS.execute(get_renderdoc_path(), ["addons/renderdoc_launcher/res/settings.cap"])
+	OS.create_process(get_renderdoc_path(), ["addons/renderdoc_launcher/res/settings.cap"])
 
 func save_path(path):
 	match OS.get_name():
