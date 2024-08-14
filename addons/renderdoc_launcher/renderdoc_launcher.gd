@@ -52,6 +52,7 @@ func execute_renderdoc():
 		return
 	
 	var file = FileAccess.open(renderdoc_settings_path, FileAccess.READ)
+	
 	if not file:
 		printerr("Error opening settings.cap!")
 		return
@@ -80,8 +81,7 @@ func execute_renderdoc():
 	
 	await get_tree().process_frame
 	print("Launching RenderDoc.")
-	var output = []
-	OS.execute(get_renderdoc_path(), ["addons/renderdoc_launcher/res/settings.cap"], output)
+	OS.execute(get_renderdoc_path(), ["addons/renderdoc_launcher/res/settings.cap"])
 
 func save_path(path):
 	match OS.get_name():
@@ -131,6 +131,10 @@ func create_renderdoc_settings() -> Error:
 	var renderdoc_settings_file = FileAccess.open(renderdoc_settings_path, FileAccess.READ)
 	if not renderdoc_settings_file:
 		var default_settings_file = FileAccess.open("addons/renderdoc_launcher/res/default_settings.cap", FileAccess.READ)
+		
+		if not default_settings_file:
+			printerr("Default Renderdoc settings not found!")
+			return ERR_FILE_NOT_FOUND
 		
 		var content = default_settings_file.get_as_text()
 		default_settings_file.close()
