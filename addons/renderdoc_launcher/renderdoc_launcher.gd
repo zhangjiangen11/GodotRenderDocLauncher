@@ -35,10 +35,9 @@ func _exit_tree():
 		print("Removed RenderDoc Launcher Button from Toolbar.")
 
 func open_renderdoc():
-	if renderdoc_path == null:
-		if create_renderdoc_path_tres() != OK:
-			printerr("Failed to create renderdoc_path.tres.")
-			return
+	if create_renderdoc_path_tres() != OK:
+		printerr("Failed to create renderdoc_path.tres.")
+		return
 	
 	if get_renderdoc_path() == null || get_renderdoc_path() == "" || not FileAccess.open(get_renderdoc_path(), FileAccess.READ):
 		print("RenderDoc path empty or not valid, please locate RenderDoc on your system.")
@@ -119,7 +118,7 @@ func get_renderdoc_path():
 func create_renderdoc_path_tres() -> Error:
 	var file = FileAccess.open(path_tres, FileAccess.READ)
 	if not file:
-		var renderdoc_path = RenderDocPath.new()
+		renderdoc_path = RenderDocPath.new()
 		var error = ResourceSaver.save(renderdoc_path, path_tres)
 		if error == OK:
 			print("Created renderdoc_path.tres.")
