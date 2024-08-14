@@ -30,7 +30,7 @@ func _enter_tree():
 	print("Added RenderDoc Launcher Button to Toolbar.")
 
 func _exit_tree():
-	if(added):
+	if (added):
 		remove_control_from_container(EditorPlugin.CONTAINER_TOOLBAR, button);
 		print("Removed RenderDoc Launcher Button from Toolbar.")
 
@@ -135,7 +135,7 @@ func create_renderdoc_settings() -> Error:
 		if not default_settings_file:
 			printerr("Default Renderdoc settings not found!")
 			return ERR_FILE_NOT_FOUND
-		
+
 		var content = default_settings_file.get_as_text()
 		default_settings_file.close()
 		
