@@ -27,7 +27,7 @@ Not only can it help us identify bottlenecks in our scene, it can also serve as 
 
 I created this plugin to simplify my workflow when using RenderDoc.
 
-Previously, I had to export my game and adjust RenderDoc's settings each time I made a change, which was tedious. I later discovered that I could directly launch a Godot project with the command-line argument "--path <path_to_your_project>" instead of having to export the game's executable, which made things easier. 
+Previously, I had to export my game and adjust RenderDoc's settings each time I made a change, which was tedious. I later discovered that I could directly launch a Godot project with the command-line argument `--path <path_to_your_project>` instead of having to export the game's executable, which made things easier. 
 
 However, I still wanted quicker access to RenderDoc without having to navigate through multiple menus or search for file paths.
 
@@ -41,7 +41,7 @@ On project startup a button is added to the toolbar. Click this button to launch
 
 The first time you click the button you will be prompted to provide RenderDoc's location. This will be saved to a resource file so you do not need to do it again.
 
-*For Windows this would typically be if the* `C:\\Program Files\\RenderDoc\\qrenderdoc.exe installer` *was used.*
+*For Windows this would typically be* `C:\\Program Files\\RenderDoc\\qrenderdoc.exe` *if the installer was used.*
 
 <p align="center">
 <img src=".github/RenderDocLauncherLocation.png" alt="RenderDocLauncherLocation" width="75%">
